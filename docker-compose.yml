@@ -14,10 +14,12 @@ services:
 
   drupal:
     #image: drupal:8.7.8-fpm-alpine
-    image: php:7.4.33-fpm
+    #image: php:7.4-fpm-alpine
+    build: .
     container_name: drupal
     depends_on:
       - mysql
+    env_file: .env
     restart: unless-stopped
     networks:
       - internal
@@ -47,5 +49,4 @@ networks:
     driver: bridge
 
 volumes:
-  drupal-data:
   db-data:
